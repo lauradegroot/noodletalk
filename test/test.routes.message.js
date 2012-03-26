@@ -51,6 +51,21 @@ describe('message', function() {
 
           message.should.equal(' <img src=\"/images/heart.png\"> ');
         });
+				it('sends a emote action', function() {
+	       var req = { 
+	         body: { 
+	           message: '</3'
+	         },
+	          session: {
+	            nickname: "nick",
+	            email: 'test@test.org'
+	          }
+	        };
+
+	          var message = messageMaker.getMessage(req, io, userList).message;
+
+	          message.should.equal(' <img src="/images/tearingmeapart.jpg"> ');
+	        });
         it('updates the userList', function() {
           var newNick = 'nick';
           var req = { 
